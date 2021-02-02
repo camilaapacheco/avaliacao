@@ -26,16 +26,24 @@ public class TurmaService {
     @Autowired
     private CursoRepository cursoRepository;
 
+
     SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
 
-    public List<TurmaDTO> listar(){
-        List<TurmaEntity> listEntity = turmaRepository.findAll();
+
+    public List<TurmaDTO> listar(List<TurmaEntity> turmaEntities){
         List<TurmaDTO> listDTO = new ArrayList<>();
 
-        //TODO implementar a conversão da lista de objetos de TurmaEntity para TurmaDTO e retornar a listDTO preenchida
+        for(TurmaEntity turmaEntity : turmaEntities) {
+            TurmaDTO turma = new TurmaDTO();
+            turma.setDtInicio(turmaEntity.getDtInicio());
+            turma.setDtFim(turmaEntity.getDtFinal());
+            turma.setCurso(turmaEntity.getCurso());
+            turma.setAlunos(turmaEntity.getAlunos());
+            turma.setInstrutores(turmaEntity.getInstrutores());
 
-
-
+            List<TurmaEntity> listEntity = turmaRepository.findAll();
+            listDTO.add(turma);
+        }
 
         return listDTO;
     }

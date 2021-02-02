@@ -1,6 +1,7 @@
 package com.rd.treinamentodev.AvaliacaoSpringBoot.controller;
 
 import com.rd.treinamentodev.AvaliacaoSpringBoot.model.dto.AlunoDTO;
+import com.rd.treinamentodev.AvaliacaoSpringBoot.model.entity.AlunoEntity;
 import com.rd.treinamentodev.AvaliacaoSpringBoot.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,11 @@ public class AlunoController {
 
     @PostMapping("/aluno")
     public ResponseEntity gravar(@RequestBody AlunoDTO alunoDTO){
+        AlunoEntity aluno = new AlunoEntity();
+
+        String cpf = alunoDTO.getCpf();
+
+
         return alunoService.gravar(alunoDTO);
     }
 }

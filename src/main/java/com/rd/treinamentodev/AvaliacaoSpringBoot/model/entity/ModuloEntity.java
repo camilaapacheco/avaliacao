@@ -6,24 +6,29 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 
 @Entity
-@Table(name = "TB_CURSO")
+@Table(name = "TB_MODULO")
 @Data
-public class CursoEntity implements Serializable {
+
+public class ModuloEntity   {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_CURSO")
-    private Long idCurso;
+    @Column(name = "ID_MODULO")
+    private BigInteger idModulo;
 
-    @Column(name = "DS_CURSO")
-    private String nomeCurso;
+    @Column(name = "DS_NOME")
+    private String nomeModulo;
 
-    @Column(name = "NR_CARGA_HORARIA")
-    private Integer nrCargaHoraria;
+    @ManyToOne
+    @JoinColumn(name = "ID_INSTRUTOR")
+    private InstrutorEntity instrutor;
+
+
 }

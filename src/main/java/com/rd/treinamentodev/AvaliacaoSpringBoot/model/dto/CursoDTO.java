@@ -1,11 +1,18 @@
 package com.rd.treinamentodev.AvaliacaoSpringBoot.model.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.math.BigInteger;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CursoDTO {
 
-    private String nome;
+    private Long idCurso;
+    private String nomeCurso;
+    private Integer nrCargaHoraria;
 
-    private Integer cargaHoraria;
 }
